@@ -30,11 +30,12 @@ const App = () => {
 
           <ul style={{ display: 'flex', listStyle: 'none', gap: '20px' }}>
             <li>
-              <Link to="/">Playground</Link>
+               <Link to="/">PlayGround</Link>
+             
             </li>
-            <br></br>
+           
             <li>
-              <Link to="/login">Login</Link>
+             <Link to="/login">Log In</Link> 
             </li>
           </ul>
           
@@ -71,7 +72,7 @@ const PrivateRoute = ({ children, isAuthenticated }) => {
 const HomePage = () => {
   return (
     <div>
-      <h1>Code Playground</h1>
+     
       <p>Hi Welcome to Code playground</p>
       
     </div>
@@ -85,7 +86,7 @@ const LoginPage = ({ isAuthenticated, onLogin }) => {
 
   return (
     <div>
-      <h1>Login</h1>
+      <p>Login</p>
       <button onClick={onLogin}>Log In</button>
     </div>
   );
