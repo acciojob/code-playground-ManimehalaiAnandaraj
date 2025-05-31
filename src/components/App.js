@@ -27,11 +27,11 @@ const App = () => {
           <div>
             {isAuthenticated ? (
               <>
-                <span>Logged in. Now you can enter Playground</span>
+                <p>Logged in, Now you can enter Playground</p>
                 <button onClick={handleLogout}>Log Out</button>
               </>
             ) : (
-              <span>You are not authenticated,Please login first</span>
+              <span>You are not authenticated, Please login first</span>
             )}
           </div>
         </nav>
