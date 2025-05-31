@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const navigate = useNavigate();
+
 
   const handleLogin = () => {
     setIsAuthenticated(true);
@@ -10,6 +13,7 @@ const App = () => {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
+    navigate('/login');
   };
 
   return (
