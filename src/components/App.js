@@ -1,4 +1,4 @@
-
+//import React from 'react';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 
@@ -17,14 +17,6 @@ const App = () => {
     <Router>
       <div className="main-container">
         <nav>
-          <ul style={{ display: 'flex', listStyle: 'none', gap: '20px' }}>
-            <li>
-              <Link to="/">Home (Playground)</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-          </ul>
           <div>
             {isAuthenticated ? (
               <>
@@ -35,6 +27,17 @@ const App = () => {
               <span>You are not authenticated, Please login first</span>
             )}
           </div>
+
+          <ul style={{ display: 'flex', listStyle: 'none', gap: '20px' }}>
+            <li>
+              <Link to="/">Playground</Link>
+            </li>
+            <br></br>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </ul>
+          
         </nav>
 
         <Routes>
@@ -70,6 +73,7 @@ const HomePage = () => {
     <div>
       <h1>Code Playground</h1>
       <p>Hi Welcome to Code playground</p>
+      
     </div>
   );
 };
@@ -82,7 +86,7 @@ const LoginPage = ({ isAuthenticated, onLogin }) => {
   return (
     <div>
       <h1>Login</h1>
-      <button onClick={onLogin}>[Log In]</button>
+      <button onClick={onLogin}>Log In</button>
     </div>
   );
 };
