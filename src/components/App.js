@@ -1,4 +1,3 @@
-//import React from 'react';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 
@@ -17,28 +16,24 @@ const App = () => {
     <Router>
       <div className="main-container">
         <nav>
+          <ul style={{ display: 'flex', listStyle: 'none', gap: '20px' }}>
+            <li>
+              <Link to="/">PlayGround</Link>
+            </li>
+            <li>
+              <Link to="/login">Log In</Link>
+            </li>
+          </ul>
           <div>
             {isAuthenticated ? (
               <>
-                <span>Logged in, Now you can enter Playground</span>
+                <span>Logged in. Now you can enter Playground</span>
                 <button onClick={handleLogout}>Log Out</button>
               </>
             ) : (
-              <span>You are not authenticated, Please login first</span>
+              <span>You are not authenticated,Please login first</span>
             )}
           </div>
-
-          <ul style={{ display: 'flex', listStyle: 'none', gap: '20px' }}>
-            <li>
-               <Link to="/">PlayGround</Link>
-             
-            </li>
-           
-            <li>
-             <Link to="/login">Log In</Link> 
-            </li>
-          </ul>
-          
         </nav>
 
         <Routes>
@@ -72,9 +67,7 @@ const PrivateRoute = ({ children, isAuthenticated }) => {
 const HomePage = () => {
   return (
     <div>
-     
       <p>Hi Welcome to Code playground</p>
-      
     </div>
   );
 };
