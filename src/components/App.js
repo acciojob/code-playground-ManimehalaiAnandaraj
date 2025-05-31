@@ -1,94 +1,35 @@
 import React, { useState } from 'react';
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  Link,
-  Navigate,
-} from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
+import Login from './Login';
+import Home from './Home';
+import PrivateRoute from './PrivateRoute';
 
-const App = () => {
+function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const handleLogin = () => {
-    setIsAuthenticated(true);
-  };
-
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-  };
 
   return (
     <div className="main-container">
       <nav>
-        <ul style={{ display: 'flex', listStyle: 'none', gap: '20px' }}>
-          <li>
-            <Link to="/">PlayGround</Link>
-          </li>
-          <li>
-            <Link to="/login">Log In</Link>
-          </li>
-        </ul>
-        <div>
-          {isAuthenticated ? (
-            <>
-              <p>Logged in, Now you can enter Playground</p>
-              <button onClick={handleLogout}>Log Out</button>
-            </>
-          ) : (
-            <span>You are not authenticated, Please login first</span>
-          )}
-        </div>
+        <Link to="/login">Login</Link> |{' '}
+        <Link to="/home">PlayGround</Link>
+        <p>Status: {isAuthenticated ? 'Logged in, Now you can enter playground' : 'You are not authenticated, please login first'}</p>
       </nav>
-
       <Routes>
         <Route
-          path="/"
+          path="/home"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
-              <HomePage />
+              <Home />
             </PrivateRoute>
           }
         />
         <Route
           path="/login"
-          element={
-            <LoginPage
-              isAuthenticated={isAuthenticated}
-              onLogin={handleLogin}
-            />
-          }
+          element={<Login setIsAuthenticated={setIsAuthenticated} />}
         />
       </Routes>
     </div>
   );
-};
-
-const PrivateRoute = ({ children, isAuthenticated }) => {
-  return isAuthenticated ? children : <Navigate to="/login" />;
-};
-
-const HomePage = () => {
-  return (
-    <div>
-      <p>Hi Welcome to Code playground</p>
-    </div>
-  );
-};
-
-const LoginPage = ({ isAuthenticated, onLogin }) => {
-  if (isAuthenticated) {
-    return <Navigate to="/" />;
-  }
-
-  return (
-    <div>
-      <p>Login</p>
-      <button onClick={onLogin}>Log In</button>
-    </div>
-  );
-};
-
-
+}
 
 export default App;
