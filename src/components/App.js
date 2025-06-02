@@ -25,13 +25,11 @@ const Main = ({ isAuthenticated, setIsAuthenticated }) => {
     const navigate = useNavigate();
 
     const handleLogin = () => {
-      
         setIsAuthenticated(true);
         navigate('/');
     };
 
     const handleLogout = () => {
-
         setIsAuthenticated(false);
         navigate('/login');
     };
@@ -78,14 +76,13 @@ const Main = ({ isAuthenticated, setIsAuthenticated }) => {
                     }
                 />
                 {/* Optional: Catch-all route for 404 Not Found */}
-                <Route path="*" element={<Navigate to="/" />} />
+                <Route path="*" element={<Navigate to={isAuthenticated ? "/" : "/login"} />} />
             </Routes>
         </div>
     );
 };
 
 const PrivateRoute = ({ children, isAuthenticated }) => {
-      
     return isAuthenticated ? children : <Navigate to="/login" />;
 };
 
