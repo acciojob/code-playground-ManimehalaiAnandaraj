@@ -25,11 +25,13 @@ const Main = ({ isAuthenticated, setIsAuthenticated }) => {
     const navigate = useNavigate();
 
     const handleLogin = () => {
+      
         setIsAuthenticated(true);
         navigate('/');
     };
 
     const handleLogout = () => {
+
         setIsAuthenticated(false);
         navigate('/login');
     };
@@ -83,6 +85,7 @@ const Main = ({ isAuthenticated, setIsAuthenticated }) => {
 };
 
 const PrivateRoute = ({ children, isAuthenticated }) => {
+      
     return isAuthenticated ? children : <Navigate to="/login" />;
 };
 
