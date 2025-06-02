@@ -31,11 +31,13 @@ function App() {
     const navigate = useNavigate();
 
     const handleLogin = () => {
+      console.log("Logging in..."); // Debugging log
       setIsAuthenticated(true);
       navigate('/');
     };
 
     const handleLogout = () => {
+      console.log("Logging out..."); // Debugging log
       setIsAuthenticated(false);
       navigate('/login');
     };
